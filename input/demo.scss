@@ -7,11 +7,36 @@ html {
 
     body {
         h1, #top {
-            content: 'This Is A Title'
+            content: 'This Is A Title';
+            background-color: green;
+            html-title: 'The paragraph title';
         }
 
         p, .class1, .class2, #id {
-            content: 'This is a paragraph with some content'
+            color: blue;
+            content-0: 'Left paragraph ';
+
+            a {
+                content: 'followed by a';
+                html-href: 'https://github.com/RubbaBoy/CSSWebsite';
+            }
+
+            content-2: ' right paragraph.';
+            content-3: 'Some more content in the paragraph, featuring ';
+
+            a {
+                content: 'another link';
+                html-href: 'https://github.com/RubbaBoy/CSSWebsite';
+            }
+
+            content-5: ' right about ';
+
+            a {
+                content: 'here';
+                html-href: 'https://github.com/RubbaBoy/CSSWebsite';
+            }
+
+            content-7: '.';
         }
     }
 }

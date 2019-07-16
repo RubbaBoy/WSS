@@ -1,6 +1,7 @@
 package com.uddernetworks.cssweb.tree;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class HtmlElement {
 
@@ -11,6 +12,8 @@ public class HtmlElement {
     private List<String> classes = new ArrayList<>();
     private Map<String, String> properties = new HashMap<>();
     private Map<String, String> attributes = new HashMap<>();
+
+    private static final List<String> RESERVED_PROPERTIES = List.of("content", "content-*", "*-html");
 
     public HtmlElement() {
         this(null);
@@ -90,9 +93,9 @@ public class HtmlElement {
         if (this.attributes.isEmpty()) return "";
         var builder = new StringBuilder(" ");
         this.attributes.forEach((name, value) -> {
-            builder.append(name).append("\"").append(value).append("\" ");
+            builder.append(name).append("=\"").append(value).append("\" ");
         });
-        return builder.toString();
+        return builder.toString().replaceAll("\\s+$",""); // Right trim
     }
 
     public String getStringClasses() {
@@ -111,21 +114,77 @@ public class HtmlElement {
         return " id=\"" + this.id + "\"";
     }
 
+    public String getStringStyles() {
+        var styles = this.properties.keySet().stream().filter(name ->
+                RESERVED_PROPERTIES.stream().noneMatch(reserved -> { // True to remove
+            if (reserved.equals(name)) return true;
+            if (reserved.startsWith("*") && name.endsWith(reserved.replace("*", ""))) return true;
+            if (reserved.endsWith("*") && name.startsWith(reserved.replace("*", ""))) return true;
+            return false;
+        })).collect(Collectors.toList());
+        System.out.println("properties = " + properties);
+
+        if (styles.isEmpty()) return "";
+        var builder = new StringBuilder(" style=\"");
+        styles.forEach(name -> builder.append(name).append(": ").append(this.properties.get(name)).append(";"));
+        return builder.append("\"").toString();
+    }
+
     @Override
     public String toString() {
         var builder = new StringBuilder();
-        var hasChildren = !children.isEmpty();
-        builder.append("<").append(type).append(getStringId()).append(getStringClasses()).append(getStringAttributes()).append(">").append(hasChildren ? "\n" : "");
-        if (properties.containsKey("content")) builder.append(hasChildren ? "    " : "").append(properties.get("content")).append(hasChildren ? "\n" : "");
 
-        for (var child : children) {
-            var string = child.toString();
-            for (String line : string.split("\n")) {
-                builder.append("  ").append(line).append("\n");
+        var allContent = new LinkedList<String>();
+        properties.keySet().stream().filter(property -> property.startsWith("content-")).sorted(Comparator.comparingInt(string -> -Integer.parseInt(string.substring(8)))).forEach(allContent::push);
+
+        var childrenStack = new LinkedList<>(children);
+        System.out.println("allContent = " + allContent);
+
+        var addingOrder = new ArrayList<>();
+        var previous = 0;
+        for (var content : allContent) {
+            var index = Integer.parseInt(content.substring(8));
+            var addElement = index - previous;
+            System.out.println("index = " + index);
+            if (addElement > 0) {
+                System.out.println("previous = " + previous);
+                System.out.println("addElement = " + addElement);
+                for (; addElement > 0; addElement--) {
+                    if (childrenStack.isEmpty()) break;
+                    addingOrder.add(childrenStack.pop());
+                    previous++;
+                }
+            }
+
+            previous++;
+            addingOrder.add(content);
+        }
+
+        while (!childrenStack.isEmpty()) addingOrder.add(childrenStack.pop());
+
+        var addNewlines = !addingOrder.isEmpty();
+
+        builder.append("<").append(type).append(getStringId()).append(getStringClasses()).append(getStringAttributes()).append(getStringStyles()).append(">").append(addNewlines ? "\n" : "");
+        if (properties.containsKey("content")) builder.append(getContentWrapper(properties.get("content"), !allContent.isEmpty()));
+
+        for (Object obj : addingOrder) {
+            if (obj instanceof String) {
+                builder.append(getContentWrapper(this.properties.get(obj), addNewlines));
+            } else {
+                var childHtml = (HtmlElement) obj;
+                var string = childHtml.toString();
+                for (String line : string.split("\n")) {
+                    builder.append("  ").append(line).append("\n");
+                }
             }
         }
 
         builder.append("</").append(type).append(">\n");
         return builder.toString();
+    }
+
+    private String getContentWrapper(String content, boolean forceNewline) {
+        var hasChildren = !children.isEmpty() || forceNewline;
+        return (hasChildren ? "    " : "") + content + (hasChildren ? "\n" : "");
     }
 }

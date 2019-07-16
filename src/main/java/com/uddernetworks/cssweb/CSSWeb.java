@@ -6,6 +6,9 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class CSSWeb {
 
@@ -25,7 +28,12 @@ public class CSSWeb {
         var stylesheet = parser.stylesheet();
 
         var root = walk((ScssParser.RulesetContext) stylesheet.getChild(0).getChild(0));
-        System.out.println("\n\n\n\n" + root);
+        var string = root.toString();
+        System.out.println("\n\n\n\n" + string);
+
+        var path = Paths.get("input\\demo.html");
+        path.toFile().delete();
+        Files.write(path, string.getBytes(), StandardOpenOption.CREATE);
     }
 
     public HtmlElement walk(ScssParser.RulesetContext t) {
@@ -67,7 +75,15 @@ public class CSSWeb {
         if (block != null) {
             block.children.stream().filter(child -> child instanceof ScssParser.PropertyContext).map(ScssParser.PropertyContext.class::cast).forEach(property -> {
                 var value = property.values().getText();
-                element.addProperty(property.identifier().getText(), value.substring(1, value.length() - 1));
+                var finalValue = value.substring(1, value.length() - 1);
+                var identifier = property.identifier().getText();
+                System.out.println("identifier = " + identifier);
+                if (identifier.startsWith("html-")) {
+                    element.addAttribute(identifier.substring(5), finalValue);
+                } else {
+                    element.addProperty(identifier, value.startsWith("'") && value.endsWith("'") ? finalValue : value);
+//                    element.addProperty(identifier, value);
+                }
             });
         }
 
