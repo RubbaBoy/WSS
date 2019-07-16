@@ -1,0 +1,17 @@
+html {
+    head {
+        title {
+            content: 'My Title'
+        }
+    }
+
+    body {
+        h1, #top {
+            content: 'This Is A Title'
+        }
+
+        p, .class1, .class2, #id {
+            content: 'This is a paragraph with some content'
+        }
+    }
+}
