@@ -43,8 +43,6 @@ public class CSSWeb {
         if (blockTree instanceof ScssParser.BlockContext) {
             var block = (ScssParser.BlockContext) blockTree;
 
-//            block.children.forEach(shit -> System.out.println(shit.getClass().getCanonicalName()));
-
             for (var child : block.getRuleContexts(ScssParser.StatementContext.class)) {
                 thisElement.addChild(walk(child.ruleset()));
             }
@@ -55,34 +53,44 @@ public class CSSWeb {
 
     private HtmlElement createElement(ScssParser.RulesetContext statement) {
         var element = new HtmlElement();
+        var useRaw = false;
 
         var selector = statement.getChild(ScssParser.SelectorsContext.class, 0);
         if (selector != null) {
-            selector.selector().stream().skip(1).forEach(idOrClass -> {
-                var text = idOrClass.getText();
-                var trimmed = text.substring(1);
-                if (text.startsWith(".")) {
-                    element.addClass(trimmed);
-                } else if (text.startsWith("#")) {
-                    element.setId(trimmed);
-                }
-            });
+            var firstSelector = selector.selector(0).getText();
+            element.setType(firstSelector);
 
-            element.setType(selector.selector(0).getText());
+            if (firstSelector.equals("style")) {
+                useRaw = true;
+            } else {
+                selector.selector().stream().skip(1).forEach(idOrClass -> {
+                    var text = idOrClass.getText();
+                    var trimmed = text.substring(1);
+                    if (text.startsWith(".")) {
+                        element.addClass(trimmed);
+                    } else if (text.startsWith("#")) {
+                        element.setId(trimmed);
+                    }
+                });
+            }
         }
 
         var block = statement.getChild(ScssParser.BlockContext.class, 0);
         if (block != null) {
+            if (useRaw) {
+                var raw = block.getText();
+                element.setRaw(raw.substring(1, raw.length() - 1));
+                return element;
+            }
+
             block.children.stream().filter(child -> child instanceof ScssParser.PropertyContext).map(ScssParser.PropertyContext.class::cast).forEach(property -> {
                 var value = property.values().getText();
                 var finalValue = value.substring(1, value.length() - 1);
                 var identifier = property.identifier().getText();
-                System.out.println("identifier = " + identifier);
                 if (identifier.startsWith("html-")) {
                     element.addAttribute(identifier.substring(5), finalValue);
                 } else {
                     element.addProperty(identifier, value.startsWith("'") && value.endsWith("'") ? finalValue : value);
-//                    element.addProperty(identifier, value);
                 }
             });
         }

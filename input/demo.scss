@@ -3,6 +3,20 @@ html {
         title {
             content: 'My Title'
         }
+
+        style {
+            .red {
+                color: red;
+            }
+
+            .green {
+                color: green;
+            }
+
+            .blue {
+                color: blue;
+            }
+        }
     }
 
     body {
@@ -16,7 +30,7 @@ html {
             color: blue;
             content-0: 'Left paragraph ';
 
-            a {
+            a, .red {
                 content: 'followed by a';
                 html-href: 'https://github.com/RubbaBoy/CSSWebsite';
             }
@@ -24,14 +38,14 @@ html {
             content-2: ' right paragraph.';
             content-3: 'Some more content in the paragraph, featuring ';
 
-            a {
+            a, .green {
                 content: 'another link';
                 html-href: 'https://github.com/RubbaBoy/CSSWebsite';
             }
 
             content-5: ' right about ';
 
-            a {
+            a, .blue {
                 content: 'here';
                 html-href: 'https://github.com/RubbaBoy/CSSWebsite';
             }
