@@ -1,0 +1,407 @@
+html {
+    head {
+
+        meta { html-charset: 'utf-8' }
+        link { html-rel: 'apple-touch-icon'; html-sizes: '76x76'; html-href: 'img/apple-icon.png' }
+        link { html-rel: 'icon'; html-type: 'image/png'; html-href: 'img/favicon.png' }
+        meta { html-http-equiv: 'X-UA-Compatible'; html-content: 'IE=edge,chrome=1' }
+
+        title { content: 'Material Kit by Creative Tim' }
+
+
+        meta { html-content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'; html-name: 'viewport' }
+
+        // Fonts and icons
+        link { html-rel: 'stylesheet'; html-type: 'text/css'; html-href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons' }
+        link { html-rel: 'stylesheet'; html-href: 'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' }
+
+        // CSS Files
+
+        link { html-href: 'css/material-kit.css?v=2.0.5'; html-rel: 'stylesheet' }
+        link { html-href: 'demo.css'; html-rel: 'stylesheet' }
+    }
+
+    body, .landing-page, .sidebar-collapse {
+        //region Navbar
+        nav, #sectionsNav, .navbar, .navbar-transparent, .navbar-color-on-scroll, .fixed-top, .navbar-expand-lg {
+            html-color-on-scroll: '100';
+
+            div, .container {
+                div, .navbar-translate {
+                    a, .navbar-brand {
+                        content: 'Material Kit';
+                        html-href: 'https://demos.creative-tim.com/material-kit/index.html'
+                    }
+
+                    button, .navbar-toggler {
+                        html-type: 'button';
+                        html-data-toggle: 'collapse';
+                        html-aria-expanded: 'false';
+                        html-aria-label: 'Toggle Navigation';
+
+                        span, .sr-only { content: 'Toggle navigation' }
+                        span, .navbar-toggler-icon {}
+                        span, .navbar-toggler-icon {}
+                        span, .navbar-toggler-icon {}
+                    }
+                }
+
+                div, .collapse, .navbar-collapse {
+                    ul, .navbar-nav, .ml-auto {
+                        li, .dropdown, .nav-item {
+                            a, .dropdown-toggle, .nav-link {
+                                html-href: '#';
+                                html-data-toggle: 'dropdown';
+                                i, .material-icons { content: 'apps' }
+                            }
+                            div, .dropdown-menu, .dropdown-with-icons {
+                                a, .dropdown-item {
+                                    html-href: '#';
+                                    i, .material-icons { content: 'layers' }
+                                    content-1: ' All Components'
+                                }
+                                a, .dropdown-item {
+                                    html-href: 'https://demos.creative-tim.com/material-kit/docs/2.1/getting-started/introduction.html';
+                                    i, .material-icons { content: 'content_paste' }
+                                    content-1: ' Documentation'
+                                }
+                            }
+                        }
+                        li, .nav-item {
+                            a, .nav-link {
+                                html-href: 'javascript:void(0)';
+                                html-onclick: 'scrollToDownload()';
+                                i, .material-icons { content: 'cloud_download' }
+                                content-1: 'Download'
+                            }
+                        }
+                        li, .nav-item {
+                            a, .nav-link {
+                                html-rel: 'tooltip';
+                                html-title: '';
+                                html-data-placement: 'bottom';
+                                html-href: 'https://twitter.com/CreativeTim';
+                                html-target: '_blank';
+                                html-data-original-title: 'Follow us on Twitter';
+                                i, .fa, .fa-twitter {}
+                            }
+                        }
+                        li, .nav-item {
+                            a, .nav-link {
+                                html-rel: 'tooltip';
+                                html-title: '';
+                                html-data-placement: 'bottom';
+                                html-href: 'https://www.facebook.com/CreativeTim';
+                                html-target: '_blank';
+                                html-data-original-title: 'Like us on Facebook';
+                                i, .fa, .fa-facebook-square {}
+                            }
+                        }
+                        li, .nav-item {
+                            a, .nav-link {
+                                html-rel: 'tooltip';
+                                html-title: '';
+                                html-data-placement: 'bottom';
+                                html-href: 'https://www.instagram.com/CreativeTimOfficial';
+                                html-target: '_blank';
+                                html-data-original-title: 'Follow us on Instagram';
+                                i, .fa, .fa-instagram {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //endregion
+
+        //region Page Header
+        div, .page-header, .header-filter {
+            html-data-parallax: 'true';
+            background-image: url('img/profile_city.jpg');
+
+            div, .container {
+                div, .row {
+                    div, .col-md-6 {
+                        h1, .title { content: 'Your Story Starts With Us.' }
+                        h4 { content: 'Every landing page needs a small description after the big bold title, that&apos;s why we added this text here. Add here all the information that can make you or your product create the first impression.' }
+                        br {}
+                        a, .btn, .btn-danger, .btn-raised, .btn-lg {
+                            html-href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+                            html-target: '_blank';
+                            i, .fa, .fa-play {}
+                            content-1: ' Watch video'
+                        }
+                    }
+                }
+            }
+        }
+        //endregion
+
+        div, .main, .main-raised {
+            div, .container {
+                //region Lets talk product
+                div, .section, .text-center {
+                    div, .row {
+                        div, .col-md-8, .ml-auto, .mr-auto {
+                            h2, .title { content: 'Let&apos;s talk product' }
+                            h5, .description { content: 'This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if you want the user to see more.' }
+                        }
+                    }
+                    div, .features {
+                        div, .row {
+                            div, .col-md-4 {
+                                div, .info {
+                                    div, .icon, .icon-info {
+                                        i, .material-icons { content: 'chat' }
+                                    }
+                                    h4, .info-title { content: 'Free Chat' }
+                                    p { content: 'Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.' }
+                                }
+                            }
+                            div, .col-md-4 {
+                                div, .info {
+                                    div, .icon, .icon-success {
+                                        i, .material-icons { content: 'verified_user' }
+                                    }
+                                    h4, .info-title { content: 'Verified Users' }
+                                    p { content: 'Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.' }
+                                }
+                            }
+                            div, .col-md-4 {
+                                div, .info {
+                                    div, .icon, .icon-danger {
+                                        i, .material-icons { content: 'fingerprints' }
+                                    }
+                                    h4, .info-title { content: 'Fingerprint' }
+                                    p { content: 'Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.' }
+                                }
+                            }
+                        }
+                    }
+                }
+                //endregion
+
+                //region Here is our team
+                div, .section, .text-center {
+                    h2, .title { content: 'Here is our team' }
+                    div, .team {
+                        div, .row {
+                            div, .col-md-4 {
+                                div, .team-player {
+                                    div, .card, .card-plain {
+                                        div, .col-md-6, .ml-auto, .mr-auto {
+                                            img, .img-raised, .rounded-circle, .img-fluid {
+                                                html-src: 'img/faces/avatar.jpg';
+                                                html-alt: 'Thumbnail Image'
+                                            }
+                                        }
+                                        h4, .card-title {
+                                            content: 'Gigi Hadid';
+                                            br {}
+                                            small, .card-description, .text-muted {
+                                                content: 'Model'
+                                            }
+                                        }
+                                        div, .card-body {
+                                            p, .card-description {
+                                                content: 'You can write here details about one of your team members. You can give more details about what they do. Feel free to add some';
+                                                a { html-href: '#'; content: 'links' }
+                                                content-1: ' for people to be able to follow them outside the site.'
+                                            }
+                                        }
+                                        div, .card-footer, .justify-content-center {
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-twitter {}
+                                            }
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-instagram {}
+                                            }
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-facebook-square {}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            div, .col-md-4 {
+                                div, .team-player {
+                                    div, .card, .card-plain {
+                                        div, .col-md-6, .ml-auto, .mr-auto {
+                                            img, .img-raised, .rounded-circle, .img-fluid {
+                                                html-src: 'img/faces/christian.jpg';
+                                                html-alt: 'Thumbnail Image'
+                                            }
+                                        }
+                                        h4, .card-title {
+                                            content: 'Christian Louboutin';
+                                            br {}
+                                            small, .card-description, .text-muted {
+                                                content: 'Designer'
+                                            }
+                                        }
+                                        div, .card-body {
+                                            p, .card-description {
+                                                content: 'You can write here details about one of your team members. You can give more details about what they do. Feel free to add some';
+                                                a { html-href: '#'; content: 'links' }
+                                                content-1: ' for people to be able to follow them outside the site.'
+                                            }
+                                        }
+                                        div, .card-footer, .justify-content-center {
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-twitter {}
+                                            }
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-linkedin {}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            div, .col-md-4 {
+                                div, .team-player {
+                                    div, .card, .card-plain {
+                                        div, .col-md-6, .ml-auto, .mr-auto {
+                                            img, .img-raised, .rounded-circle, .img-fluid {
+                                                html-src: 'img/faces/kendall.jpg';
+                                                html-alt: 'Thumbnail Image'
+                                            }
+                                        }
+                                        h4, .card-title {
+                                            content: 'Kendall Jenner';
+                                            br {}
+                                            small, .card-description, .text-muted {
+                                                content: 'Designer'
+                                            }
+                                        }
+                                        div, .card-body {
+                                            p, .card-description {
+                                                content: 'You can write here details about one of your team members. You can give more details about what they do. Feel free to add some';
+                                                a { html-href: '#'; content: 'links' }
+                                                content-1: ' for people to be able to follow them outside the site.'
+                                            }
+                                        }
+                                        div, .card-footer, .justify-content-center {
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-twitter {}
+                                            }
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-instagram {}
+                                            }
+                                            a, .btn, .btn-link, .btn-just-icon {
+                                                html-href: '#pablo';
+                                                i, .fa, .fa-facebook-square {}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //endregion
+
+                //region Work with us
+                div, .section, .section-contacts {
+                    div, .row {
+                        div, .col-md-8, .ml-auto, .mr-auto {
+                            h2, .text-center, .title { content: 'Work With us' }
+                            h4, .text-center, .description { content: 'Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.' }
+
+                            form, .contact-form {
+                                div, .row {
+                                    div, .col-md-6 {
+                                        div, .form-group {
+                                            label, .bmd-label-floating { content: 'Your Name' }
+                                            input, .form-control { html-type: 'email' }
+                                        }
+                                    }
+                                    div, .col-md-6 {
+                                        div, .form-group {
+                                            label, .bmd-label-floating { content: 'Your Email' }
+                                            input, .form-control { html-type: 'email' }
+                                        }
+                                    }
+                                }
+                                div, .form-group {
+                                    label, .bmd-label-floating {
+                                        content: 'Your Message';
+                                        html-for: 'exampleMessage'
+                                    }
+                                    textarea, #exampleMessage, .form-control { html-type: 'email' }
+                                }
+                                div, .row {
+                                    div, .col-md-4, .ml-auto, .mr-auto, .text-center {
+                                        button, .btn, .btn-primary, .btn-raised { content: 'Send Message' }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //endregion
+            }
+        }
+
+        //region Footer
+        footer, .footer, .footer-default {
+            div, .container {
+                nav, .float-left {
+                    ul {
+                        li {
+                            a { content: 'Creative Tim'; html-href: 'https://www.creative-tim.com' }
+                        }
+                        li {
+                            a { content: 'About Us'; html-href: 'https://creative-tim.com/presentation' }
+                        }
+                        li {
+                            a { content: 'Blog'; html-href: 'http://blog.creative-tim.com' }
+                        }
+                        li {
+                            a { content: 'Licenses'; html-href: 'https://www.creative-tim.com/license' }
+                        }
+                    }
+                }
+                div, .copyright, .float-right {
+                    content: '&copy;';
+                    script { content: 'document.write(new Date().getFullYear())' }
+                    content-1: ', made with ';
+                    i, .material-icons { content: 'favorites' }
+                    content-3: ' by ';
+                    a {
+                        content: 'Creative Tim';
+                        html-href: 'https://www.creative-tim.com';
+                        html-target: '_blank'
+                    }
+                    content-5: ' for a better web.'
+                }
+            }
+        }
+        //endregion
+
+        // Core JS Files
+
+        script { html-src: 'js/core/jquery.min.js'; html-type: 'text/javascript' }
+        script { html-src: 'js/core/popper.min.js'; html-type: 'text/javascript' }
+        script { html-src: 'js/core/bootstrap-material-design.min.js'; html-type: 'text/javascript' }
+        script { html-src: 'js/plugins/moment.min.js' }
+
+        // Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker
+        script { html-src: 'js/plugins/bootstrap-datetimepicker.js'; html-type: 'text/javascript' }
+
+        // Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/
+        script { html-src: 'js/plugins/nouislider.min.js'; html-type: 'text/javascript' }
+
+        // Google Maps Plugin
+        script { html-src: 'https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'; html-type: 'text/javascript' }
+
+        // Control Center for Material Kit: parallax effects, scripts for the example pages etc
+        script { html-src: 'js/material-kit.js?v=2.0.5'; html-type: 'text/javascript' }
+    }
+}

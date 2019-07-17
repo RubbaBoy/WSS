@@ -1,8 +1,14 @@
-# CSS Website
+# WSS
 
-This is a little project I've made that can convert CSS (Allowing for nested elements, as how SCSS does it) into usable HTML.
+WSS, or Website Style Scripts, is a little project I've made that can convert CSS (Allowing for nested elements, as how SCSS does it) into usable HTML.
 
-Example input:
+This can create nearly any webpage in existence, and to prove so I've remade the [Creative Tim Material Kit landing page example](https://demos.creative-tim.com/material-kit/examples/landing-page.html) into CSS, which compiles to a perfect replica.
+
+The CSS may be found here: [landing-page.scss](https://github.com/RubbaBoy/WSS/tree/master/input/material-kit/landing-page.scss)
+
+And its compiled output here: [landing-page.html](https://rawgit.com/RubbaBoy/WSS/tree/master/input/material-kit/landing-page.html)
+
+Here's another example input:
 
 ```scss
 html {
@@ -49,7 +55,7 @@ html {
 }
 ```
 
-Example output:
+The above output:
 
 ```html
 <html>

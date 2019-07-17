@@ -27,7 +27,7 @@
 parser grammar ScssParser;
 
 @header {
-package com.uddernetworks.cssweb.scss;
+package com.uddernetworks.wss.scss;
 }
 
 options { tokenVocab=ScssLexer; }

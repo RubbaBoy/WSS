@@ -27,7 +27,7 @@
 lexer grammar ScssLexer;
 
 @header {
-package com.uddernetworks.cssweb.scss;
+package com.uddernetworks.wss.scss;
 }
 
 

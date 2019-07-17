@@ -1,56 +1,66 @@
 html {
     head {
         title {
-            content: 'My Title'
+            content: 'Navbar Demo'
         }
 
         style {
-            .red {
-                color: red;
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
             }
 
-            .green {
-                color: green;
+            li {
+                float: left;
             }
 
-            .blue {
-                color: blue;
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            li a:hover:not(.active) {
+                background-color: #111;
+            }
+
+            .active {
+                background-color: #4CAF50;
             }
         }
     }
 
     body {
-        h1, #top {
-            content: 'This Is A Title';
-            background-color: green;
-            html-title: 'The paragraph title';
-        }
-
-        p, .class1, .class2, #id {
-            color: blue;
-            content-0: 'Left paragraph ';
-
-            a, .red {
-                content: 'followed by a';
-                html-href: 'https://github.com/RubbaBoy/CSSWebsite';
+        ul {
+            li {
+                a, .active {
+                    content: 'Home';
+                    html-href: '#home';
+                }
             }
-
-            content-2: ' right paragraph.';
-            content-3: 'Some more content in the paragraph, featuring ';
-
-            a, .green {
-                content: 'another link';
-                html-href: 'https://github.com/RubbaBoy/CSSWebsite';
+            li {
+                a {
+                    content: 'News';
+                    html-href: '#news';
+                }
             }
-
-            content-5: ' right about ';
-
-            a, .blue {
-                content: 'here';
-                html-href: 'https://github.com/RubbaBoy/CSSWebsite';
+            li {
+                a {
+                    content: 'Contact';
+                    html-href: '#contact';
+                }
             }
-
-            content-7: '.';
+            li {
+                a {
+                    content: 'About';
+                    html-href: '#about';
+                }
+            }
         }
     }
 }
