@@ -9,12 +9,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class CSSWeb {
+public class WSS {
 
     private static final String INPUT = "input\\material-kit\\landing-page.scss";
 
     public static void main(String[] args) throws IOException {
-        new CSSWeb().main();
+        new WSS().main();
     }
 
     private String inputString;
