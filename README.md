@@ -6,7 +6,7 @@ This can create nearly any webpage in existence, and to prove so I've remade the
 
 The CSS may be found here: [landing-page.scss](https://github.com/RubbaBoy/WSS/tree/master/input/material-kit/landing-page.scss)
 
-And its compiled output here: [landing-page.html](https://rawgit.com/RubbaBoy/WSS/tree/master/input/material-kit/landing-page.html)
+And its compiled output here: [landing-page.html](https://htmlpreview.github.io/?https://github.com/RubbaBoy/WSS/blob/master/input/material-kit/landing-page.html)
 
 Here's another example input:
 
